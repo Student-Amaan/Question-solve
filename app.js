@@ -8,3 +8,12 @@ words.forEach(word => {
     countword[word] = (countword[word] || 0) + 1
     console.log(countword)
 });
+
+
+let arr = [1,[2,3],[4,[5,6]]]
+
+function flateArray() {
+    return arr.flat(Infinity)
+}
+
+console.log(flateArray())
