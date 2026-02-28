@@ -7,7 +7,7 @@ let countword = {};
 
 words.forEach((word) => {
   countword[word] = (countword[word] || 0) + 1;
-  console.log(countword)
+  console.log(countword);
 });
 
 let arr = [1, [2, 3], [4, [5, 6]]];
@@ -36,3 +36,28 @@ function removeDuble(ar) {
 }
 
 console.log(removeDuble(duplicate));
+
+function debonce(fn, delay) {
+  let timer;
+
+  return function (...arg) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, arg);
+      console.log("function is debonce");
+    }, delay);
+  };
+}
+
+console.log(debonce());
+
+function danishfn(name) {
+  console.log("Aman danish", name);
+}
+
+const deboncefunction = debonce(danishfn, 2000);
+
+deboncefunction("aman");
+deboncefunction("danish");
+deboncefunction("waxir");
+deboncefunction("rahim");
