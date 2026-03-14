@@ -61,3 +61,24 @@ deboncefunction("aman");
 deboncefunction("danish");
 deboncefunction("waxir");
 deboncefunction("rahim");
+
+
+// Closures
+
+function outer(){
+  let count = 0
+
+  return function(){
+    count++
+    console.log(count)
+  }
+}
+
+const counter = outer()
+
+
+counter()
+counter()
+counter()
+counter()
+counter()
