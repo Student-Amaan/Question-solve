@@ -62,23 +62,45 @@ deboncefunction("danish");
 deboncefunction("waxir");
 deboncefunction("rahim");
 
-
 // Closures
 
-function outer(){
-  let count = 0
+function outer() {
+  let count = 0;
 
-  return function(){
-    count++
-    console.log(count)
-  }
+  return function () {
+    count++;
+    console.log(count);
+  };
 }
 
-const counter = outer()
+const counter = outer();
 
+counter();
+counter();
+counter();
+counter();
+counter();
 
-counter()
-counter()
-counter()
-counter()
-counter()
+function debounce(fn, delay) {
+  let timer;
+
+  return function (...args) {
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+      fn(...args);
+    }, delay);
+  };
+}
+
+function search(query) {
+  console.log("Searching for:", query);
+}
+
+const debounceSearch = debounce(search, 1000);
+
+debounceSearch("h");
+debounceSearch("he");
+debounceSearch("hel");
+debounceSearch("hell");
+debounceSearch("hello");
